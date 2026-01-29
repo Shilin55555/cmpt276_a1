@@ -1,0 +1,90 @@
+/* apple style web page, search online for apple color */
+
+body {
+    background: #f5f5f7;
+    color: #1d1d1f;
+    font-family: -apple-system, Arial, sans-serif;
+  }
+  
+  .header {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 20px 20px 20px;
+    font-size: 60px;
+    font-weight: 550;
+  }
+  
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 25px;
+    padding: 25px;
+  }
+  
+  /* cross whole row */
+  .card_row {
+    grid-column: 1 / -1;
+  }
+  
+  .label {
+    color: #646469;
+    font-size: 14px;
+  }
+  
+  .input, .button {
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 14px;
+  }
+  
+  .input {
+    border: 1px solid #c6c6c6;
+    background: white;
+  }
+  
+  .button {
+    margin-top: 12px;
+    background: black;
+    color: white;
+    font-weight: 500;
+  }
+  
+  .weather_body {
+    padding: 10px 0;
+    border-bottom: 1px solid #cccccc;
+  }
+  
+  .key { color: #7b7b7c; }
+  .value { font-weight: 600; }
+  
+  .list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .pill {
+    background: white;
+    border: 1px solid #d0d0d0;
+    border-radius: 1000px;
+    padding: 10px 10px;
+    font-size: 14px;
+  }
+  
+  .hid { display: none; }
+  
+  .load { margin-top: 10px; color: rgb(34, 34, 211) }
+  .error { margin-top: 10px; color: rgb(175, 64, 64) }
+  
