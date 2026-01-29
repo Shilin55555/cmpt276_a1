@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Finder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- header -->
+    <header class="header">
+        Weather Finder
+    </header>
+  <main class="container grid">
+    <!-- view city card -->
+    <section class="card">
+      <h1>View City</h1>
+
+      <label class="label">Choose a city</label>
+      <select id="citySelect" class="input">
+        <option value="Vancouver">Vancouver</option>
+        <option value="Victoria">Victoria</option>
+        <option value="Calgary">Calgary</option>
+        <option value="Edmonton">Edmonton</option>
+        <option value="Winnipeg">Winnipeg</option>
+
+        <option value="Toronto">Toronto</option>
+        <option value="Ottawa">Ottawa</option>
+        <option value="Hamilton">Hamilton</option>
+        <option value="London">London</option>
+        <option value="Montreal">Montreal</option>
+
+        <option value="Quebec City">Quebec City</option>
+        <option value="Halifax">Halifax</option>
+        <option value="Whitehorse">Whitehorse</option>
+        <option value="Mississauga">Mississauga</option>
+        <option value="Surrey">Surrey</option>
+      </select>
+
+      <button id="viewCityBtn" class="button">View City</button>
+
+      <!-- loading and error  -->
+      <div id="loading" class="load hid">Loading...</div>
+      <div id="error" class="error hid">Error message goes here</div>
+    </section>
+
+    <!-- weather display card -->
+    <section class="card">
+      <h1>Current Weather</h1>
+      <div class="weather">
+        <div class="weather_body">
+            <span class="key">
+                City
+            </span>
+            <span class="value">~</span>
+        </div>
+        <div class="weather_body">
+            <span class="key">
+                Temperature
+            </span>
+            <span class="value">~</span>
+        </div>
+        <div class="weather_body">
+            <span class="key">
+                Wind
+            </span>
+            <span class="value">~</span>
+        </div>
+        <div class="weather_body">
+            <span class="key">
+                Description
+            </span>
+            <span class="value">~</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- top 10 city list -->
+    <section class="card card_row">
+      <h1>Top 10 Cities</h1>
+      <ul id="top10List" class="list">
+        <li class="pill">Calgary</li>
+        <li class="pill">Ottawa</li>
+        <li class="pill">Edmonton</li>
+        <li class="pill">Winnipeg</li>
+        <li class="pill">Quebec City</li>
+        <li class="pill">Halifax</li>
+        <li class="pill">Victoria</li>
+        <li class="pill">Saskatoon</li>
+        <li class="pill">Regina</li>
+        <li class="pill">St. John's</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
