@@ -150,4 +150,3 @@ for (var i = 0; i < top10Pills.length; i++) {
   var pill = top10Pills[i];
   pill.addEventListener("click", onTop10Click);
 }
-
