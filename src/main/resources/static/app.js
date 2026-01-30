@@ -45,14 +45,17 @@ function codeToText(code) {
 async function readErrorReason(res) {
   try {
     const data = await res.json();
-    if (data && data.reason) return data.reason;
+    if (data && data.reason) 
+      return data.reason;
     return `HTTP ${res.status}`;
-  } catch {
+  } 
+  catch {
     return `HTTP ${res.status}`;
   }
 }
 
 // api
+// Geocoding API _ Open-Meteo.com
 async function geocodeCity(cityName) {
   const url =
     "https://geocoding-api.open-meteo.com/v1/search" +
@@ -81,6 +84,7 @@ async function geocodeCity(cityName) {
   };
 }
 
+// GEM API _ Open-Meteo.com
 async function fetchCurrentWeather(lat, lon) {
   const url =
     "https://api.open-meteo.com/v1/forecast" +
@@ -109,7 +113,7 @@ async function fetchCurrentWeather(lat, lon) {
   };
 }
 
-// shared loader
+// top 10 city
 async function loadCityWeather(city) {
   clearError();
   showLoading();
@@ -118,25 +122,32 @@ async function loadCityWeather(city) {
     const loc = await geocodeCity(city);
     const w = await fetchCurrentWeather(loc.lat, loc.lon);
     setWeather(city, w.tempC, w.windKph, w.desc);
-  } catch (err) {
+  } 
+  catch (err) {
     console.error(err);
-    // intentionally different fallback message to create a conflict
-    showError(err && err.message ? err.message : "ViewCity: failed to fetch weather data.");
-  } finally {
+    showError(err && err.message ? err.message : "Failed to fetch weather data.");
+  } 
+  finally {
     hideLoading();
   }
 }
 
-// View City button
+// call back function
 async function foo() {
   const city = city_select.value.trim();
   await loadCityWeather(city);
 }
 view_button.addEventListener("click", foo);
 
-// Top10 is not implemented in this branch
 const top10Pills = document.querySelectorAll(".pill");
+
+async function onTop10Click(e) {
+  const city = e.target.textContent.trim();
+  await loadCityWeather(city);
+}
+// event trigger
 for (var i = 0; i < top10Pills.length; i++) {
   var pill = top10Pills[i];
-  pill.style.opacity = "0.5";
+  pill.addEventListener("click", onTop10Click);
 }
+
