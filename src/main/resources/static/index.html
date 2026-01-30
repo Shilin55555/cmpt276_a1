@@ -10,7 +10,7 @@
 <body>
     <!-- header -->
     <header class="header">
-        Weather Finder
+        wFinder
     </header>
   <main class="container grid">
     <!-- view city card -->
@@ -31,7 +31,7 @@
         <option value="London">London</option>
         <option value="Montreal">Montreal</option>
 
-        <option value="Quebec City">Quebec City</option>
+        <option value="Quebec">Quebec</option>
         <option value="Halifax">Halifax</option>
         <option value="Whitehorse">Whitehorse</option>
         <option value="Mississauga">Mississauga</option>
@@ -41,8 +41,11 @@
       <button id="viewCityBtn" class="button">View City</button>
 
       <!-- loading and error  -->
-      <div id="loading" class="load hid">Loading...</div>
-      <div id="error" class="error hid">Error message goes here</div>
+      <div class="load hid" role="status" aria-live="polite">
+        <span class="spinner" aria-hidden="true"></span>
+        <span class="load text">Loading...</span>
+      </div>
+      <div class="error hid" role="alert">Error message goes here</div>
     </section>
 
     <!-- weather display card -->
@@ -84,7 +87,7 @@
         <li class="pill">Ottawa</li>
         <li class="pill">Edmonton</li>
         <li class="pill">Winnipeg</li>
-        <li class="pill">Quebec City</li>
+        <li class="pill">Quebec</li>
         <li class="pill">Halifax</li>
         <li class="pill">Victoria</li>
         <li class="pill">Saskatoon</li>
