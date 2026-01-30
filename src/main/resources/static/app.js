@@ -45,17 +45,14 @@ function codeToText(code) {
 async function readErrorReason(res) {
   try {
     const data = await res.json();
-    if (data && data.reason) 
-      return data.reason;
+    if (data && data.reason) return data.reason;
     return `HTTP ${res.status}`;
-  } 
-  catch {
+  } catch {
     return `HTTP ${res.status}`;
   }
 }
 
 // api
-// Geocoding API _ Open-Meteo.com
 async function geocodeCity(cityName) {
   const url =
     "https://geocoding-api.open-meteo.com/v1/search" +
@@ -84,7 +81,6 @@ async function geocodeCity(cityName) {
   };
 }
 
-// GEM API _ Open-Meteo.com
 async function fetchCurrentWeather(lat, lon) {
   const url =
     "https://api.open-meteo.com/v1/forecast" +
@@ -113,7 +109,7 @@ async function fetchCurrentWeather(lat, lon) {
   };
 }
 
-// top 10 city
+// shared loader
 async function loadCityWeather(city) {
   clearError();
   showLoading();
@@ -122,32 +118,30 @@ async function loadCityWeather(city) {
     const loc = await geocodeCity(city);
     const w = await fetchCurrentWeather(loc.lat, loc.lon);
     setWeather(city, w.tempC, w.windKph, w.desc);
-  } 
-  catch (err) {
+  } catch (err) {
     console.error(err);
-    showError(err && err.message ? err.message : "Failed to fetch weather data.");
-  } 
-  finally {
+    // intentionally different fallback message to create a conflict
+    showError(err && err.message ? err.message : "Top10: failed to fetch weather data.");
+  } finally {
     hideLoading();
   }
 }
 
-// call back function
+// View City is not implemented in this branch
 async function foo() {
-  const city = city_select.value.trim();
-  await loadCityWeather(city);
+  showError("View City feature is implemented in another branch.");
 }
 view_button.addEventListener("click", foo);
 
+// Top10 click-to-load
 const top10Pills = document.querySelectorAll(".pill");
 
 async function onTop10Click(e) {
-  const city = e.target.textContent.trim();
+  const city = e.currentTarget.textContent.trim();
   await loadCityWeather(city);
 }
-// event trigger
+
 for (var i = 0; i < top10Pills.length; i++) {
   var pill = top10Pills[i];
   pill.addEventListener("click", onTop10Click);
 }
-
